@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{36B83AD1-BAF8-4CE6-89BB-F6FC7B597C64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjectK.ES</RootNamespace>
+    <AssemblyName>ProjectK.ES</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Aggregates\AggregatePlayer.cs" />
+    <Compile Include="Aggregates\MobMutator.cs" />
+    <Compile Include="Aggregates\ObservationMutator.cs" />
+    <Compile Include="Aggregates\AnimalMutator.cs" />
+    <Compile Include="Commands\AnimalIntoMobCommand.cs" />
+    <Compile Include="Commands\AnimalUpdatedCommand.cs" />
+    <Compile Include="Commands\CommandProcessorFactory.cs" />
+    <Compile Include="Commands\CommandValidatorFactory.cs" />
+    <Compile Include="Commands\MobCreatedCommand.cs" />
+    <Compile Include="Commands\Processors\AnimalArrivedCommandProcessor.cs" />
+    <Compile Include="Commands\AbstractObservationCommand.cs" />
+    <Compile Include="Commands\AnimalArrivedCommand.cs" />
+    <Compile Include="Commands\Processors\AnimalIntoMobCommandProcessor.cs" />
+    <Compile Include="Commands\Processors\AnimalUpdatedCommandProcessor.cs" />
+    <Compile Include="Commands\Processors\MobCreatedCommandProcessor.cs" />
+    <Compile Include="Commands\Validators\AnimalArrivedCommandValidator.cs" />
+    <Compile Include="Events\AnimalArrivedEventProcessor.cs" />
+    <Compile Include="Events\AnimalIntoMobEventProcessor.cs" />
+    <Compile Include="Events\AnimalUpdatedEventProcessor.cs" />
+    <Compile Include="Events\MobCreatedEventProcessor.cs" />
+    <Compile Include="Events\AnimalCreatedEventProcessor.cs" />
+    <Compile Include="Events\EventKinds.cs" />
+    <Compile Include="Extrapolations\AnimalIntoMobExtrapolator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectK.Core\ProjectK.Core.csproj">
+      <Project>{34e1c89a-4484-4a0a-b8a7-60cb78448a58}</Project>
+      <Name>ProjectK.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectK.DataStore\ProjectK.DataStore.csproj">
+      <Project>{398D46DE-5BFF-4382-9917-3AF390FCA155}</Project>
+      <Name>ProjectK.DataStore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProjectK.Model\ProjectK.Model.csproj">
+      <Project>{13d350f4-2924-42bd-a25e-6f381f79d684}</Project>
+      <Name>ProjectK.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
